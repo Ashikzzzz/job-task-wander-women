@@ -51,7 +51,21 @@ const getAllTravel = catchAsync(async (req: Request, res: Response) => {
   // next();
 });
 
+// get a single travel data
+const getSingleTravelData = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const result = await travelDetailService.getSingleTravelData(id);
+
+  responseForData.sendResponseForCreate<ITravelDetails>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: ' Getting Successful',
+    data: result,
+  });
+});
+
 export const travelController = {
   createATravel,
   getAllTravel,
+  getSingleTravelData,
 };

@@ -69,7 +69,16 @@ const getAllTravel = async (
   };
 };
 
+// get a single tour data
+const getSingleTravelData = async (
+  id: string,
+): Promise<ITravelDetails | null> => {
+  const result = await TravelDetails.findById(id);
+  return result;
+};
+
 export const travelDetailService = {
   createATravel,
   getAllTravel,
+  getSingleTravelData,
 };
