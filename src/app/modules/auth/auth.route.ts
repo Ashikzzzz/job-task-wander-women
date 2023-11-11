@@ -13,10 +13,10 @@ router.post(
 );
 
 // // refresh token
-// router.post(
-//   '/refresh-token',
-//   validateRequest(authValidation.refreshTokenValidationZodSchema),
-//   authController.refreshToken,
-// );
+router.post(
+  '/refresh-token',
+  validateRequest(authValidation.refreshTokenValidationZodSchema),
+  authController.refreshToken,
+);
 
 export const authRoute = router;
