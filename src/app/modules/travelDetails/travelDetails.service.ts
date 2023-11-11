@@ -77,8 +77,21 @@ const getSingleTravelData = async (
   return result;
 };
 
+// update  a travel data
+const updateTravelData = async (
+  id: string,
+  payload: Partial<ITravelDetails>,
+) => {
+  const result = await TravelDetails.findOneAndUpdate(
+    { _id: id },
+    { $set: payload },
+  );
+  return result;
+};
+
 export const travelDetailService = {
   createATravel,
   getAllTravel,
   getSingleTravelData,
+  updateTravelData,
 };

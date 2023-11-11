@@ -7,6 +7,9 @@ import { ENUM_USER_ROLE } from '../../enums/user';
 
 const router = express.Router();
 
+// update a travel data
+router.patch('/update-travel-data/:id', travelController.updateTravelData);
+
 // get a single tour data
 router.get('/:id', travelController.getSingleTravelData);
 

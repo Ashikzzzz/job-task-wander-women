@@ -64,8 +64,23 @@ const getSingleTravelData = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+// update a travel data
+const updateTravelData = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const travelData = req.body;
+  const result = await travelDetailService.updateTravelData(id, travelData);
+
+  responseForData.sendResponseForCreate<ITravelDetails>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Travel data Update Successful',
+    data: result,
+  });
+});
+
 export const travelController = {
   createATravel,
   getAllTravel,
   getSingleTravelData,
+  updateTravelData,
 };
