@@ -78,9 +78,23 @@ const updateTravelData = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+// delete travel data
+const deleteTravelData = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const result = await travelDetailService.deleteTravelData(id);
+
+  responseForData.sendResponseForCreate<ITravelDetails>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: ' Delete Successful',
+    data: result,
+  });
+});
+
 export const travelController = {
   createATravel,
   getAllTravel,
   getSingleTravelData,
   updateTravelData,
+  deleteTravelData,
 };

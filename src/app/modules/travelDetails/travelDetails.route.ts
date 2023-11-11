@@ -7,6 +7,9 @@ import { ENUM_USER_ROLE } from '../../enums/user';
 
 const router = express.Router();
 
+// delete travel data
+router.delete('/:id', travelController.deleteTravelData);
+
 // update a travel data
 router.patch('/update-travel-data/:id', travelController.updateTravelData);
 

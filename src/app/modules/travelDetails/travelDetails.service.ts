@@ -89,9 +89,16 @@ const updateTravelData = async (
   return result;
 };
 
+// delete travel data
+const deleteTravelData = async (id: string): Promise<ITravelDetails | null> => {
+  const result = await TravelDetails.findByIdAndDelete(id);
+  return result;
+};
+
 export const travelDetailService = {
   createATravel,
   getAllTravel,
   getSingleTravelData,
   updateTravelData,
+  deleteTravelData,
 };
