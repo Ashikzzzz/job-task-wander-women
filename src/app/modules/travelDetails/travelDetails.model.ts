@@ -34,10 +34,10 @@ const travelDetailsSchema = new Schema<ITravelDetails>(
           type: String,
         },
         departureTime: {
-          type: Date.now(),
+          type: Date,
         },
         arrivalTime: {
-          type: Date.now(),
+          type: Date,
         },
         flightNumber: {
           type: String,
