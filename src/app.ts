@@ -13,6 +13,10 @@ app.use(express.urlencoded({ extended: true }));
 
 // import necessery files
 import globalErrorHandler from './app/middlewares/globalErrorHandler';
+import router from './app/route';
+
+// global route
+app.use('/api/v1', router);
 
 // use global error handler
 app.use(globalErrorHandler);
