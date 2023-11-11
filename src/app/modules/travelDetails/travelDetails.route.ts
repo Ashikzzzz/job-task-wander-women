@@ -8,21 +8,37 @@ import { ENUM_USER_ROLE } from '../../enums/user';
 const router = express.Router();
 
 // delete travel data
-router.delete('/:id', travelController.deleteTravelData);
+router.delete(
+  '/:id',
+  auth(ENUM_USER_ROLE.ADMIN),
+  travelController.deleteTravelData,
+);
 
 // update a travel data
-router.patch('/update-travel-data/:id', travelController.updateTravelData);
+router.patch(
+  '/update-travel-data/:id',
+  auth(ENUM_USER_ROLE.ADMIN),
+  travelController.updateTravelData,
+);
 
 // get a single tour data
-router.get('/:id', travelController.getSingleTravelData);
+router.get(
+  '/:id',
+  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.VIEWER),
+  travelController.getSingleTravelData,
+);
 
 // get all travel
-router.get('/', travelController.getAllTravel);
+router.get(
+  '/',
+  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.VIEWER),
+  travelController.getAllTravel,
+);
 
 // create tour
 router.post(
   '/create-tour',
-  //   auth(ENUM_USER_ROLE.ADMIN),
+  auth(ENUM_USER_ROLE.ADMIN),
   validateRequest(travelValidation.travelValidationZodSchema),
   travelController.createATravel,
 );

@@ -8,7 +8,7 @@ import { TravelDetails } from './travelDetails.model';
 const createATravel = async (
   payload: ITravelDetails,
 ): Promise<ITravelDetails> => {
-  const result = await TravelDetails.create(payload);
+  const result = (await TravelDetails.create(payload)).populate('userData');
   return result;
 };
 

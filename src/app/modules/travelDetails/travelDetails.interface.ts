@@ -1,4 +1,5 @@
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
+import { IUser } from '../user/user.interface';
 
 export type ITransportation = {
   mode: string;
@@ -24,6 +25,7 @@ export type ITravelDetails = {
   activities: string[];
   transportationDetails: ITransportation[];
   accommodationDetails: IAccommodationDetails[];
+  userData: Types.ObjectId | IUser; // relation with user
 };
 
 export type ITravelFilters = {

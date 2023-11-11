@@ -60,7 +60,14 @@ const travelDetailsSchema = new Schema<ITravelDetails>(
         },
       },
     ],
+    userData: {
+      // relation with user
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
   },
+
   {
     timestamps: true,
   },
