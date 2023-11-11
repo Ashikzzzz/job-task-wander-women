@@ -172,3 +172,5 @@ api : http://localhost:5000/api/v1/travel/update-travel-data/654ef37adfda0dcaea3
 # delete data : access only admin
 
 api :http://localhost:5000/api/v1/travel/654ef4a95204f99acf7bce5e
+
+### Please Check all APi after login and send Authorization token.
