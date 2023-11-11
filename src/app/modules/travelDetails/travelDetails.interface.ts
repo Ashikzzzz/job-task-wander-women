@@ -26,4 +26,8 @@ export type ITravelDetails = {
   accommodationDetails: IAccommodationDetails[];
 };
 
+export type ITravelFilters = {
+  searchTerm?: string;
+};
+
 export type TravelDetailsModel = Model<ITravelDetails, Record<string, unknown>>;

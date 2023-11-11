@@ -2,12 +2,18 @@ import express from 'express';
 import validateRequest from '../../middlewares/validationRequest';
 import { travelValidation } from './travelDetails.validation';
 import { travelController } from './travelDetails.controller';
+import auth from '../../middlewares/auth';
+import { ENUM_USER_ROLE } from '../../enums/user';
 
 const router = express.Router();
+
+// get all travel
+router.get('/', travelController.getAllTravel);
 
 // create tour
 router.post(
   '/create-tour',
+  //   auth(ENUM_USER_ROLE.ADMIN),
   validateRequest(travelValidation.travelValidationZodSchema),
   travelController.createATravel,
 );

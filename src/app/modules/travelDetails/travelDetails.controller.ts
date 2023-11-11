@@ -3,6 +3,8 @@ import catchAsync from '../../../shared/catchAsync';
 import { travelDetailService } from './travelDetails.service';
 import { responseForData } from '../../../shared/sendResponse';
 import httpStatus from 'http-status';
+import pick from '../../../shared/pick';
+import { ITravelDetails } from './travelDetails.interface';
 
 // create a tour
 
@@ -18,6 +20,38 @@ const createATravel = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+// get all tour data
+const getAllTravel = catchAsync(async (req: Request, res: Response) => {
+  const filters = pick(req.query, [
+    'searchTerm',
+    'startDate',
+    'endDate',
+    'destinations',
+    'accommodationDetails.hotelName',
+  ]);
+  const paginationOption = pick(req.query, [
+    'limit',
+    'page',
+    'sortBy',
+    'sortOrder',
+  ]);
+
+  const result = await travelDetailService.getAllTravel(
+    filters,
+    paginationOption,
+  );
+
+  responseForData.sendResponse<ITravelDetails[]>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: ' Getting Successful',
+    data: result.data,
+    meta: result.meta,
+  });
+  // next();
+});
+
 export const travelController = {
   createATravel,
+  getAllTravel,
 };
