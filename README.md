@@ -174,3 +174,18 @@ api : http://localhost:5000/api/v1/travel/update-travel-data/654ef37adfda0dcaea3
 api :http://localhost:5000/api/v1/travel/654ef4a95204f99acf7bce5e
 
 ### Please Check all APi after login and send Authorization token.
+
+# env file
+
+DB_LOCAL=your database
+NODE_ENV=development
+PORT=5000
+BCRYPT_SALT_ROUND=12
+JWT_SECRET="jesonwebtoken"
+JWT_EXPIRES_IN=60d
+JWT_REFRESH_SECRET="refreshTOken"
+JWT_REFRESH_EXPIRES_IN=365d
+
+## Postman API Documentation
+
+# https://documenter.getpostman.com/view/26241327/2s9YXk3Lgo
