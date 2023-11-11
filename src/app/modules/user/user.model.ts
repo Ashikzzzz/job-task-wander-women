@@ -3,20 +3,29 @@ import { IUser, UserModel } from './user.interface';
 import bcrypt from 'bcrypt';
 import config from '../../../config';
 
-const userSchema = new Schema<IUser>({
-  name: {
-    type: String,
+const userSchema = new Schema<IUser>(
+  {
+    name: {
+      type: String,
+    },
+    email: {
+      type: String,
+      required: true,
+    },
+    password: {
+      type: String,
+      required: true,
+      select: 0,
+    },
+    role: {
+      type: String,
+      enum: ['admin', 'viewer'],
+    },
   },
-  email: {
-    type: String,
-    required: true,
+  {
+    timestamps: true,
   },
-  password: {
-    type: String,
-    required: true,
-    select: 0,
-  },
-});
+);
 
 // hash the password
 userSchema.pre('save', async function (next) {

@@ -9,6 +9,9 @@ const userZodSchema = z.object({
     password: z.string({
       required_error: 'password is required',
     }),
+    role: z.enum(['admin', 'viewer'], {
+      required_error: 'Role is required',
+    }),
   }),
 });
 
